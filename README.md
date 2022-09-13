@@ -10,12 +10,16 @@ An example workflow to run rubocop-todo-regenerator via adding labels to pull re
 # .github/workflows/rubocop-todo-regenerator.yml
 name: rubocop-todo-regenerator
 on:
-  workflow_dispatch:
+  pull_request:
+    types: [labeled]
 jobs:
   run:
+    if: github.event.label.name == 'rubocop-todo-regenerate'
     runs-on: ubuntu-latest
     steps:
-      - uses: ydah/rubocop-todo-regenerator@v0
+      - uses: ydah/rubocop-todo-regenerator@main
+        with:
+          github_token: ${{ secrets.WRITABLE_GITHUB_TOKEN }}
 ```
 
 ## Inputs

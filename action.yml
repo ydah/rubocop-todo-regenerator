@@ -1,0 +1,31 @@
+name: rubocop-todo-regenerator
+author: ydah <t.yudai92@gmail.com>
+description: Custom action to regenerate `.rubocop_todo.yml` and create Pull Request.
+branding:
+  color: red
+  icon: git-pull-request
+inputs:
+  github_token:
+    description: GitHub access token to run another workflows from new pull request.
+    required: false
+runs:
+  using: "composite"
+  steps:
+    - name: Checking out repository
+      uses: actions/checkout@v3
+      with:
+        ref: ${{ github.head_ref }}
+    - name: Setup Ruby
+      uses: ruby/setup-ruby@v1
+    - run: |
+        git config user.name "${GITHUB_ACTOR}"
+        git config user.email "${GITHUB_ACTOR}@users.noreply.github.com"
+        bundle install
+        bundle exec rubocop --auto-gen-config --regenerate-todo
+        git add -u
+        git commit -m "rubocop --auto-gen-config --regenerate-todo"
+        git push
+      continue-on-error: true
+      shell: bash
+      env:
+        GITHUB_TOKEN: ${{ inputs.github_token || github.token }}

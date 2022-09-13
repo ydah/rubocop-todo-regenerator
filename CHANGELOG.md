@@ -2,6 +2,8 @@
 
 ## Unreleased
 
+## 0.1.1 - 2022-09-13
+
 ### Changed
 
 - Remove unnecessary options `--auto-gen-config`.

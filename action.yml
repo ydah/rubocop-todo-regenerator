@@ -8,14 +8,20 @@ inputs:
   github_token:
     description: GitHub access token to run another workflows from new pull request.
     required: false
+  triggered_label:
+    description: Specify the label to be triggered.
+    required: false
+    default: "rubocop-todo-regenerate"
 runs:
   using: "composite"
   steps:
     - name: Checking out repository
+      if: github.event.label.name == inputs.triggered_label
       uses: actions/checkout@v3
       with:
         ref: ${{ github.head_ref }}
     - name: Setup Ruby
+      if: github.event.label.name == inputs.triggered_label
       uses: ruby/setup-ruby@v1
     - run: |
         git config user.name "${GITHUB_ACTOR}"
@@ -25,7 +31,12 @@ runs:
         git add -u
         git commit -m "rubocop --regenerate-todo"
         git push
-      continue-on-error: true
+      if: github.event.label.name == inputs.triggered_label
       shell: bash
       env:
         GITHUB_TOKEN: ${{ inputs.github_token || github.token }}
+    - name: Post-processing
+      uses: actions-ecosystem/action-remove-labels@v1
+      if: github.event.label.name == inputs.triggered_label
+      with:
+        labels: github.event.label.name

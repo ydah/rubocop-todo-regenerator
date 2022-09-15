@@ -14,7 +14,6 @@ on:
     types: [labeled]
 jobs:
   run:
-    if: github.event.label.name == 'rubocop-todo-regenerate'
     runs-on: ubuntu-latest
     steps:
       - uses: ydah/rubocop-todo-regenerator@main
@@ -29,3 +28,8 @@ jobs:
 - GitHub access token to run another workflows from new pull request.
   - Don't forget to add `workflow` scope to this token
 - optional
+
+### `triggered_label`
+
+- Specify the label to be triggered.
+- default: `rubocop-todo-regenerate`

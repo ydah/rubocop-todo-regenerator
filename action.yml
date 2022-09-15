@@ -12,6 +12,10 @@ inputs:
     description: Specify the label to be triggered.
     required: false
     default: "rubocop-todo-regenerate"
+  preparation_command:
+    description: Preparation commands to be plugged in after the repository is checked out and Ruby is set up.
+    required: false
+    default: ""
 runs:
   using: "composite"
   steps:
@@ -23,6 +27,10 @@ runs:
     - name: Setup Ruby
       if: github.event.label.name == inputs.triggered_label
       uses: ruby/setup-ruby@v1
+    - name: Run preparation command
+      run: ${{ inputs.preparation_command  }}
+      if: github.event.label.name == inputs.triggered_label
+      shell: bash
     - run: |
         git config user.name "${GITHUB_ACTOR}"
         git config user.email "${GITHUB_ACTOR}@users.noreply.github.com"

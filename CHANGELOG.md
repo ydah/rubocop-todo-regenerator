@@ -5,6 +5,7 @@
 ### Added
 
 - Add `triggered_label` option.
+- Add `preparation_command` option.
 
 ## 0.1.1 - 2022-09-13
 

@@ -33,3 +33,9 @@ jobs:
 
 - Specify the label to be triggered.
 - default: `rubocop-todo-regenerate`
+
+### `preparation_command`
+
+- Specify the label to be triggered.
+- default: `""` (empty string means no op)
+- optional

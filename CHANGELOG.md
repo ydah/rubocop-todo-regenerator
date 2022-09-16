@@ -2,6 +2,8 @@
 
 ## Unreleased
 
+## 0.2.0 - 2022-09-17
+
 ### Added
 
 - Add `triggered_label` option.

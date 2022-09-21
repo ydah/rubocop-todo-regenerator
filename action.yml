@@ -28,7 +28,7 @@ runs:
       if: github.event.label.name == inputs.triggered_label
       uses: ruby/setup-ruby@v1
     - name: Run preparation command
-      run: ${{ inputs.preparation_command  }}
+      run: ${{ inputs.preparation_command }}
       if: github.event.label.name == inputs.triggered_label
       shell: bash
     - run: |

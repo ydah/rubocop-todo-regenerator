@@ -2,6 +2,8 @@
 
 ## Unreleased
 
+## 0.2.1 - 2022-09-21
+
 ### Fixed
 
 - Fix problem with label deletion failure.

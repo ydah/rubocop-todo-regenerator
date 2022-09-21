@@ -47,4 +47,4 @@ runs:
       uses: actions-ecosystem/action-remove-labels@v1
       if: github.event.label.name == inputs.triggered_label
       with:
-        labels: github.event.label.name
+        labels: ${{ inputs.triggered_label }}

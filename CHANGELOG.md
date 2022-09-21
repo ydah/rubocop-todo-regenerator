@@ -2,6 +2,10 @@
 
 ## Unreleased
 
+### Fixed
+
+- Fix problem with label deletion failure.
+
 ## 0.2.0 - 2022-09-17
 
 ### Added

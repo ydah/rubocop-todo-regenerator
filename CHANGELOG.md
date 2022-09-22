@@ -2,6 +2,10 @@
 
 ## Unreleased
 
+### Added
+
+- Change `bundle install` to `env bundle install`
+
 ## 0.2.1 - 2022-09-21
 
 ### Fixed

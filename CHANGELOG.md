@@ -2,6 +2,8 @@
 
 ## Unreleased
 
+## 0.4.0 - 2023-02-06
+
 ### Changed
 
 - Change to use the latest version of Bundler.

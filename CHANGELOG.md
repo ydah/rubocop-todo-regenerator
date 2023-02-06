@@ -5,6 +5,7 @@
 ### Changed
 
 - Change to use the latest version of Bundler.
+- Change to use the latest version of rubygems.
 
 ## 0.3.0 - 2022-09-22
 

@@ -32,6 +32,7 @@ runs:
       if: github.event.label.name == inputs.triggered_label
       shell: bash
     - run: |
+        gem update --system
         gem update bundler
         git config user.name "${GITHUB_ACTOR}"
         git config user.email "${GITHUB_ACTOR}@users.noreply.github.com"

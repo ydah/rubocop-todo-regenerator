@@ -21,7 +21,7 @@ runs:
   steps:
     - name: Checking out repository
       if: github.event.label.name == inputs.triggered_label
-      uses: actions/checkout@v3
+      uses: actions/checkout@v4
       with:
         ref: ${{ github.head_ref }}
     - name: Setup Ruby

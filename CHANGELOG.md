@@ -2,6 +2,8 @@
 
 ## Unreleased
 
+## 0.5.0 - 2023-12-05
+
 ### Fixed
 
 - Fix GitHub Actions is not working when execute git push command.

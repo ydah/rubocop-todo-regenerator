@@ -23,6 +23,7 @@ runs:
       if: github.event.label.name == inputs.triggered_label
       uses: actions/checkout@v4
       with:
+        token: ${{ inputs.github_token || github.token }}
         ref: ${{ github.head_ref }}
     - name: Setup Ruby
       if: github.event.label.name == inputs.triggered_label

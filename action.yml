@@ -21,7 +21,7 @@ runs:
   steps:
     - name: Checking out repository
       if: github.event.label.name == inputs.triggered_label
-      uses: actions/checkout@v4
+      uses: actions/checkout@v5
       with:
         token: ${{ inputs.github_token || github.token }}
         ref: ${{ github.head_ref }}
